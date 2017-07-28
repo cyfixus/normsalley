@@ -1,0 +1,16 @@
+
+<md-card *ngIf="users">
+    <md-card-header>
+        <div md-card-avatar md-image-no-fill><img src="{{getUserAvatar()}}"></div>
+        <md-card-title id="blogTitle">{{ user.firstName }}</md-card-title>
+        <md-card-subtitle id="blogSubtitle">{{ user.lastName }}</md-card-subtitle>
+        <span style="flex: 1 1 auto;"></span>
+            <md-card-actions *ngIf="belongsToUser(user.email)">
+                <button md-raised-button id="buttonStyle" color="accent"><md-icon>mode_edit</md-icon></button>
+                <button md-raised-button id="buttonStyle" color="warn"><md-icon>delete_forever</md-icon></button>
+            </md-card-actions>
+    </md-card-header>
+        <md-card-content id="blogContent">
+            <div>{{user.email}}</div>
+        </md-card-content>
+</md-card>

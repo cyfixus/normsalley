@@ -1,0 +1,22 @@
+
+<md-card>
+    <md-card-header>
+        <div md-card-avatar md-image-no-fill><img src="{{getUserAvatar()}}"></div>
+        <md-card-title id="blogTitle">{{ blog.title }}</md-card-title>
+        <md-card-subtitle id="blogSubtitle">{{ blog.username }}</md-card-subtitle>
+        <span style="flex: 1 1 auto;"></span>
+            <md-card-actions *ngIf="belongsToUser()">
+                <button md-raised-button id="buttonStyle" color="accent" (click)="onEdit()"><md-icon>mode_edit</md-icon></button>
+                <button md-raised-button id="buttonStyle" color="warn" (click)="confirmDelete()"><md-icon>delete_forever</md-icon></button>
+            </md-card-actions>
+    </md-card-header>
+        <md-card-content id="blogContent"><p style="text-align: right;">
+<span style="font-size: 0.8em;"><em>{{ blog.tag }}</em></span></p>
+        <div  [innerHTML]="blog.content"></div>
+        </md-card-content>
+        <div>
+           <md-card-actions *ngIf="isLoggedIn()">
+                <button md-raised-button id="commentButtonStyle" color="primary"><md-icon>add</md-icon>Comment</button>
+            </md-card-actions>
+        </div>
+</md-card>

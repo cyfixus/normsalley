@@ -1,0 +1,27 @@
+<md-card>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <md-input-container class="authInput">
+                <input  mdInput
+                    placeholder="E-mail" 
+                    type="email"
+                    id="email"
+                    class="form-control"
+                    formControlName="email">
+            </md-input-container>
+            <md-input-container class="authInput">
+                <input  mdInput
+                    placeholder="Password" 
+                    type="password"
+                    id="password"
+                    class="form-control"
+                    formControlName="password">
+            </md-input-container>
+        </div>
+        <button md-raised-button
+                id="buttonStyle" 
+                color="accent"
+                type="submit"
+                [disabled]="!loginForm.valid">Submit</button>
+    </form>
+</md-card>

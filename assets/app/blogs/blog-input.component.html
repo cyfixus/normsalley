@@ -1,0 +1,77 @@
+<md-card>
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <div class="form-group">
+         <md-input-container class="blogTitleInput">
+            <input  
+                    mdInput
+                    placeholder="blog title" 
+                    type="text"
+                    id="title"
+                    name="title" 
+                    class="form-control"
+                    [ngModel]="blog?.title"
+                    required>
+         </md-input-container>
+         <ckeditor
+                    placeholder="blog content" 
+                    [config]="{uiColor: '#666666', height: '15em'}"
+                    type="text"
+                    id="content"
+                    name="content" 
+                    class="form-control"
+                    [ngModel]="blog?.content">
+                    </ckeditor>
+        <md-input-container class="blogTitleInput">
+            <input   
+                    mdInput
+                    placeholder="tag"
+                    type="text"
+                    id="tag"
+                    name="tag"
+                    class="form-control"
+                    [ngModel]="blog?.tag">
+        </md-input-container>
+         <!-- <md-input-container class="blogContentInput">
+            <button 
+                    class="tatoolbarButton" 
+                    type="button"
+                    (click)="addTag(f,'p')">p</button>  
+            <button 
+                    class="tatoolbarButton" 
+                    type="button">i</button> 
+            <button 
+                    class="tatoolbarButton" 
+                    type="button">b</button>
+            <textarea 
+                    mdInput mdTextareaAutosize
+                    [mdAutosizeMinRows]="10"
+                    placeholder="blog content" 
+                    type="text"
+                    id="content"
+                    name="content" 
+                    class="form-control"
+                    [ngModel]="blog?.content"
+                    required #t></textarea>             
+         </md-input-container> -->
+        </div>
+        <md-card-actions>
+            <button 
+                md-raised-button 
+                color="accent" 
+                id="buttonStyle" 
+                type="submit" 
+                >
+                <md-icon>save</md-icon>
+            </button>
+            <button 
+                md-raised-button 
+                type="button" 
+                id="buttonStyle" 
+                color="primary" 
+                (click)="onClear(f)">
+                <md-icon>clear</md-icon>
+            </button>
+        
+        </md-card-actions>
+    </form>
+</md-card>

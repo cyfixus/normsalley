@@ -1,0 +1,60 @@
+<md-card>
+    <md-card-title>
+    <span><h1 id="centerText">Welcome!</h1></span>
+    </md-card-title>
+    <md-card-subtitle>
+            <span *ngIf="isLoggedIn()">
+                <h1 id="centerText"><a>{{getUserName()}}</a>!</h1>
+            </span>
+               <h2 id="centerText">
+                   Welcome to my web app. I intend to invest my time in developing this sharing space through which I will display and describe the projects, ideas, art, development(web, desktop, mobile), games, and any other medium suitable to be expressed sufficiently within the confines of the computer medium. 
+               </h2>
+               <h3 id="centerText">
+                   I developed normsalley.com within the MEAN convention of full-stack web application development. 
+                   <p>The database storing the blog posts, users, messages, and the various sources of data presented here, is <a href="http://www.mongodb.com" target="_blank">MongoDB</a>.</p>
+                   <p><a href="http://expressjs.com" target="_blank">Express</a> is utilized as a javascript framework to provide the functionailty necessary to efficiently route data and requests between node and the database</p>
+                   <p>Thank <a href="http://angular.io" target="_blank">Angular</a> for this extremely responsive front end, what you see and interact with throughout your experience here via the DOM (Document Object Model) is rendered in your browser. </p>
+                   <p>The front end is developed in <a href="http://www.typescriptlang.org" target="_blank">TypeScript</a>.</p>
+                   <p><a href="http://nodejs.org" target="_blank">node js</a> is responsible for connecting it all together, relying heavily on express.             
+                   </p>
+               </h3>
+               <h4 id="centerText">As I continue to contribute to the contents of this app, you may encounter programs developed in <a href="http://www.java.com" target="_blank">Java</a>, <a href="https://en.wikipedia.org/wiki/C_(programming_language)" target="_blank">c</a>, <a href="https://isocpp.org/" target="_blank">c++</a>, <a href="https://docs.microsoft.com/en-us/dotnet/csharp/csharp" target="_blank">c#</a>, <a href="http://www.python.org" target="_blank">python</a>.</h4>
+               <h4>Send any development requests to <a href="email://normsalley@gmail.com" target="_blank">normsalley@gmail.com</a></h4>
+    </md-card-subtitle>
+
+    <md-card-actions>
+        <span id="centerPad" *ngIf="isLoggedIn()"></span>
+        <span id="centerPadOut" *ngIf="!isLoggedIn()"></span>
+
+                     <button 
+                            md-raised-button
+                            routerLinkActive="active" 
+                            *ngIf="!isLoggedIn()" 
+                            id="signupButtonStyle" 
+                            [routerLink]="['/auth/signup']">
+                            Signup
+                    </button>
+
+                    <button 
+                            md-raised-button
+                            routerLinkActive="active" 
+                            *ngIf="!isLoggedIn()" 
+                            id="logoutButtonStyle" 
+                            color="accent" 
+                            [routerLink]="['/auth/signin']">
+                            Login
+                    </button>
+
+                    <button 
+                            md-raised-button
+                            routerLinkActive="active" 
+                            *ngIf="isLoggedIn()" 
+                            id="logoutButtonStyle" 
+                            color="warn" 
+                            [routerLink]="['/auth/logout']">
+                            Logout
+                    </button>
+
+    </md-card-actions>
+
+    </md-card>

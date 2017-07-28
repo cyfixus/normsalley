@@ -1,0 +1,3 @@
+<app-blog
+                   [blog]="blog"
+                    *ngFor="let blog of blogs | reverse | filterPipe: filterBy"></app-blog>

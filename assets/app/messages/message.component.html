@@ -1,0 +1,14 @@
+
+<md-card>
+    <md-card-header>
+        <md-card-title>{{ message.title }}</md-card-title>
+        <md-card-subtitle>{{ message.username }}</md-card-subtitle>
+    </md-card-header>
+        <md-card-content>
+            {{ message.content }}
+        </md-card-content>
+            <md-card-actions *ngIf="belongsToUser()">
+                <button md-raised-button color="accent"(click)="onEdit()">Edit</button>
+                <button md-raised-button color="warn"(click)="onDelete()">Delete</button>
+            </md-card-actions>
+</md-card>

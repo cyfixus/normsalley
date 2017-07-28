@@ -1,0 +1,197 @@
+<md-sidenav align="start" mode="push" #leftnav id="snSpacer">
+<div id="tagBarWidth">
+            <button 
+                    md-button
+                    id="searchBarButtonStyle" 
+                    color="accent"
+                    type="button"
+                    [routerLink]="['/ideas']"
+                    (click)="leftnav.toggle()">
+                    ideas
+            </button>
+            <button 
+                    md-button
+                    id="searchBarButtonStyle" 
+                    color="accent"
+                    type="button"
+                    [routerLink]="['/projects']"
+                    (click)="leftnav.toggle()">
+                    projects
+            </button>
+            <button 
+                    md-button
+                    id="searchBarButtonStyle" 
+                    color="accent"
+                    type="button"
+                    [routerLink]="['/art']"
+                    (click)="leftnav.toggle()">
+                    art
+            </button>
+            <button 
+                    md-button
+                    id="searchBarButtonStyle" 
+                    color="accent"
+                    type="button"
+                    [routerLink]="['/dev']"
+                    (click)="leftnav.toggle()">
+                    dev
+            </button>
+        </div>
+</md-sidenav>
+<md-sidenav align="end" mode="side" #sidenav id="snSpacer">
+<div id="tagBarWidth">
+            <button 
+                    md-button
+                    id="searchBarButtonStyle" 
+                    color="accent"
+                    type="button"
+                    (click)="chooseFilter('food');sidenav.toggle()">
+                    food
+            </button>
+            <button 
+                    md-button
+                    id="searchBarButtonStyle" 
+                    color="accent"
+                    type="button"
+                    (click)="chooseFilter('travel');sidenav.toggle()">
+                    travel
+            </button>
+            <button 
+                    md-button
+                    id="searchBarButtonStyle" 
+                    color="accent"
+                    type="button"
+                    (click)="chooseFilter('garden');sidenav.toggle()">
+                    garden
+            </button>
+            <button 
+                    md-button
+                    id="searchBarButtonStyle" 
+                    color="accent"
+                    type="button"
+                    (click)="chooseFilter('dogs');sidenav.toggle()">
+                    dog
+            </button>
+            <button 
+                    md-button
+                    id="searchBarButtonStyle" 
+                    color="accent"
+                    type="button"
+                    (click)="chooseFilter('health');sidenav.toggle()">
+                    health
+            </button>
+            <button 
+                    md-button
+                    id="searchBarButtonStyle" 
+                    color="accent"
+                    type="button"
+                    (click)="chooseFilter('updates');sidenav.toggle()">
+                    updates
+            </button>
+        </div>
+</md-sidenav>
+<div layout="column" flex id="tbStyle" >
+<md-toolbar color="accent" layout="column" flex id="tbStyle">
+        <button md-icon-button (click)="leftnav.toggle()"><md-icon>menu_vert</md-icon></button>
+      <md-menu #appMenu="mdMenu">
+
+        <button 
+                md-menu-item 
+                routerLinkActive="active" 
+                *ngIf="!isLoggedIn()" 
+                [routerLink]="['/auth/signin']">
+                Login
+                <md-icon
+                        id="toolbarMenuIcon">
+                        perm_identity
+                </md-icon>
+        </button>
+
+        <hr *ngIf="!isLoggedIn()">
+
+        <button 
+                md-menu-item 
+                routerLinkActive="active" 
+                *ngIf="!isLoggedIn()" 
+                [routerLink]="['/auth/signup']">
+                Signup
+                <md-icon
+                        id="toolbarMenuIcon">
+                        perm_identity
+                </md-icon>
+        </button>
+
+        <button 
+                md-menu-item 
+                routerLinkActive="active" 
+                *ngIf="isLoggedIn()" 
+                [routerLink]="['/profile']">
+                {{ getUserName() }} 
+                <md-icon 
+                        id="toolbarMenuIcon">
+                        face
+                </md-icon>
+        </button>
+
+        <hr *ngIf="isLoggedIn()">
+
+        <button md-menu-item routerLinkActive="active" *ngIf="isLoggedIn()" [routerLink]="['/users']">Users <md-icon id="toolbarMenuIcon">contacts</md-icon></button>
+
+        <hr *ngIf="isLoggedIn()">
+
+        <button md-menu-item routerLinkActive="active" *ngIf="isLoggedIn()" [routerLink]="['/auth/logout']">Logout<md-icon id="toolbarMenuIcon">exit_to_app</md-icon></button>
+
+      </md-menu>
+
+      <button md-icon-button [mdMenuTriggerFor]="appMenu">
+
+         <md-icon *ngIf="isLoggedIn()">face</md-icon>
+         <md-icon *ngIf="!isLoggedIn()">account_circle</md-icon>
+
+
+      </button>
+        <button 
+                md-icon-button 
+                routerLinkActive="active" 
+                [routerLink]="['/landing']">
+                <md-icon>
+                  home
+                </md-icon>
+        </button>
+        <button md-icon-button routerLinkActive="active"  *ngIf="isLoggedIn()" [routerLink]="['/blogs/new']" (click)="editFalse()"><md-icon>note_add</md-icon></button>
+
+      <img src="{{logo}}" md-icon-button id="toolbarStyleBlog" routerLinkActive="active" [routerLink]="['/blogs']" (click)="chooseFilter('all')">
+
+      <button md-icon-button routerLinkActive="active" [routerLink]="['/lists']">
+        <md-icon>view_list</md-icon>
+      </button>  
+
+      <button md-icon-button routerLinkActive="active" *ngIf="isLoggedIn()" [routerLink]="['/messages']">
+        <md-icon>email</md-icon>
+      </button>  
+
+                <form [formGroup]="searchForm" (ngSubmit)="chooseFilter(searchForm.value.search)">
+        <span class="form-group" id="searchWidth">
+            <md-input-container id="searchInput">
+                <input  
+                      mdInput
+                      placeholder="search" 
+                      type="search"
+                      id="search"
+                      class="form-control"
+                      formControlName="search">
+            </md-input-container>
+            <button
+                    id="searchButton" 
+                    color="accent"
+                    type="submit">
+                    <md-icon>
+                      search
+                    </md-icon>
+            </button>
+
+            </span>
+            </form>
+            <button md-icon-button (click)="sidenav.toggle()"><md-icon>exit_to_app</md-icon></button>
+</md-toolbar>
+</div>
